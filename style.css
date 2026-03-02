@@ -44,30 +44,34 @@ header {
 
 h1 { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; margin: 0; color: var(--primary); }
 
-/* BARRA SCORREVOLE FLASH NEWS */
+/* BARRA FLASH NEWS SISTEMATA (TICKER) */
 .ticker-wrap {
     background: #ff0000;
     color: white;
     padding: 12px 0;
     width: 100%;
+    overflow: hidden;
 }
 
 .ticker {
     display: flex;
     white-space: nowrap;
     animation: ticker 25s linear infinite;
+    width: max-content; /* Importante per lo scorrimento */
 }
 
-.ticker span {
-    padding-right: 50px;
+.ticker-item {
+    display: inline-block;
+    padding: 0 40px; /* Spazio tra gli elementi */
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
 }
 
 @keyframes ticker {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-150%); }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Scorri solo la metà duplicata */
 }
 
 main { padding: 20px; max-width: 800px; margin: auto; }
@@ -78,6 +82,12 @@ main { padding: 20px; max-width: 800px; margin: auto; }
     border-radius: 12px;
     margin-bottom: 25px;
     border: 1px solid #222;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.1);
 }
 
 .cyber-alert { border: 2px solid var(--purple); background: #0d001a; }
@@ -109,7 +119,8 @@ main { padding: 20px; max-width: 800px; margin: auto; }
 h2 { font-size: 1.8rem; margin: 10px 0; }
 p { color: var(--gray); font-size: 1.1rem; }
 
-footer { text-align: center; padding: 50px; background: #121212; margin-top: 50px; }
+/* FOOTER PULITO */
+footer { text-align: center; padding: 50px; background: #121212; margin-top: 50px; border-top: 1px solid #222; }
 
 .ig-link {
     color: var(--primary);
@@ -119,8 +130,10 @@ footer { text-align: center; padding: 50px; background: #121212; margin-top: 50p
     padding: 12px 25px;
     border-radius: 50px;
     display: inline-block;
+    font-size: 1.1rem;
+    margin-top: 5px;
 }
 
 .ig-link:hover { background: var(--primary); color: white; }
 
-.copyright { font-size: 0.7rem; margin-top: 20px; color: #444; }
+.copyright { font-size: 0.7rem; margin-top: 25px; color: #444; }
